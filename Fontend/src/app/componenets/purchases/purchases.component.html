@@ -1,0 +1,24 @@
+<div class="row">
+  <div *ngFor="let temp of orders" class="col-md-4 myorder buyingorder" >
+    <div class="card order-item">
+      <div class="totprice">{{temp.price * temp.quantity | currency: 'USD'}}</div>
+      <div class="totprice to2">{{temp.price | currency: 'USD'}}</div>
+      <img src="assets/img/{{temp.img}}.jpg" alt="Denim Jeans" style="width:100%">
+      <h1>{{temp.name}}</h1>
+      <p class="price">
+        <i (click)="addOrder(temp)" class="fas fa-plus"></i>
+        <span>{{temp.quantity}}</span>
+        <i (click)="removeOrder(temp)" class="fas fa-minus"></i></p>
+      <button (click)="remove(temp)" class="btn btn-primary mybu">Remove</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="check-out">
+  <div class="size">Total Order : {{totalorder}}</div>
+  <div class="totalprice">Total Price : {{totalprice | currency: 'USD'}}</div>
+  <a routerLink="/checkout">
+  <button *ngIf="orders.length !== 0"  type="button" class="btn btn-primary done">Check Out</button></a>
+</div>
+<!--(click)="checkOut()" *ngIf=""-->

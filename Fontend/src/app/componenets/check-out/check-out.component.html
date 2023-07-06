@@ -1,0 +1,104 @@
+<form (ngSubmit)="done()" class="row" [formGroup]="checkoutparentgroupe">
+        <div formGroupName="data" class="col-md-8 myorder data">
+          <label class="myla">Your Data</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" >@</span>
+
+            <input formControlName="fullName" type="text" class="form-control" placeholder="Full Name" aria-label="Username" aria-describedby="basic-addon1">
+
+          </div><!--add validation name-->
+
+
+          <div class="input-group mb-3">
+            <input formControlName="gmail" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <span class="input-group-text" >@gmail.com</span>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">Phone Number</span>
+            <input formControlName=" phone" type="text" class="form-control"  aria-describedby="basic-addon3">
+          </div>
+
+        </div>
+
+
+        <div formGroupName="frompersone" class="col-md-8 myorder data">
+          <label class="myla">From : </label>
+          <div class="input-group mb-3">
+            <select (change)="getStatesByCode('frompersone')" formControlName="country" class="form-select">
+              <option [ngValue]="temp.code" *ngFor="let temp of countries">{{temp.code}}</option>
+
+            </select>
+            <label class="input-group-text myin" for="inputGroupSelect02">Country</label>
+          </div>
+          <div class="input-group mb-3">
+            <select formControlName="state" class="form-select" id="inputGroupSelect02">
+              <option [ngValue]="temp"  *ngFor="let temp of states">{{temp.name}}</option>
+
+            </select>
+            <label class="input-group-text myin" for="inputGroupSelect02">State</label>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">Zip Code</span>
+            <input formControlName="zipCode" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+
+        </div>
+        <div class="col-md-8 myorder data">
+          <div class="form-check form-switch">
+            <input (change)="similerGroupe($event)" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+            <label class="form-check-label smi" for="flexSwitchCheckChecked">Similar</label>
+          </div>
+
+        </div>
+
+        <div formGroupName="topersone" class="col-md-8 myorder data">
+          <label class="myla">To :</label>
+          <div class="input-group mb-3">
+            <select (change)="getStatesByCode('topersone')" formControlName="country" class="form-select">
+              <option [ngValue]="temp.code"  *ngFor="let temp of countries">{{temp.code}}</option>
+            </select>
+            <label class="input-group-text myin" for="inputGroupSelect02">Country</label>
+          </div>
+          <div class="input-group mb-3">
+            <select formControlName="state" class="form-select" >
+              <option [ngValue]="temp"  *ngFor="let temp of states">{{temp.name}}</option>
+            </select>
+            <label class="input-group-text myin" >State</label>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">Zip Code</span>
+            <input formControlName="zipCode" type="text" class="form-control" aria-describedby="basic-addon3">
+          </div>
+
+        </div>
+       <div formGroupName="creditCard" class="col-md-8 myorder data">
+    <label class="myla">Card Type :</label>
+    <div class="input-group mb-3">
+      <select formControlName="cardType" class="form-select">
+        <option value="1">Visa</option>
+        <option value="2">Card</option>
+      </select>
+      <label class="input-group-text myin" for="inputGroupSelect02">Type</label>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" >Card Number</span>
+      <input formControlName="cardNumber" type="text" class="form-control" aria-describedby="basic-addon3">
+    </div>
+         <div class="input-group mb-3">
+           <label class="input-group-text myin" for="inputGroupSelect02">Code</label>
+           <input formControlName="code" type="text" class="form-control" aria-describedby="basic-addon3">
+         </div>
+</div>
+  <div class="check-out">
+    <div class="size">Total Order :{{totalSize}}</div>
+    <div class="totalprice">Total Price :{{totalPrice}} </div>
+    <button   type="submit" class="btn btn-primary done">Check Out</button>
+  </div>
+
+</form>
+
+
+
+
